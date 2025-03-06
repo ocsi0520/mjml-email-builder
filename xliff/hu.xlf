@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="hu" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="s33f85f24c0f5f008">
+  <source>Save</source>
+  <target>Mentés</target>
+</trans-unit>
+<trans-unit id="s4f20edb48a6287c9">
+  <source>Load</source>
+  <target>Betöltés</target>
+</trans-unit>
+<trans-unit id="s57adf424d57c8a0f">
+  <source>Send</source>
+  <target>Elküldés</target>
+</trans-unit>
+<trans-unit id="sc26501e3ade7da3c">
+  <source>Tools</source>
+  <target>Eszközök</target>
+</trans-unit>
+<trans-unit id="sb9d0970f9b083e06">
+  <source>Change selected</source>
+  <target>Módosítás</target>
+</trans-unit>
+<trans-unit id="s99f110d27e30b289">
+  <source>Title</source>
+  <target>Címsor</target>
+</trans-unit>
+<trans-unit id="se95992921d950735">
+  <source>Percentage</source>
+  <target>%</target>
+</trans-unit>
+<trans-unit id="s37bc81cc302ebd37">
+  <source>Pixel</source>
+  <target>Pixel</target>
+</trans-unit>
+<trans-unit id="s08fb5707b5964d37">
+  <source>EM</source>
+  <target>EM</target>
+</trans-unit>
+<trans-unit id="sd7086c4425c53c80">
+  <source>Font family</source>
+  <target>Betűtípus</target>
+</trans-unit>
+<trans-unit id="sa30f1981fd1cd441">
+  <source>Font size</source>
+  <target>Betű méret</target>
+</trans-unit>
+<trans-unit id="sa4d58219ed66ed0f">
+  <source>Text alignment</source>
+  <target>Szöveg elrendezés</target>
+</trans-unit>
+<trans-unit id="sa5c371b4bb75e590">
+  <source>Left</source>
+  <target>Bal</target>
+</trans-unit>
+<trans-unit id="sb38d497d992ab4a4">
+  <source>Center</source>
+  <target>Közép</target>
+</trans-unit>
+<trans-unit id="s366991b9c9287765">
+  <source>Right</source>
+  <target>Jobb</target>
+</trans-unit>
+<trans-unit id="s236ed7ba747099b0">
+  <source>Font weight</source>
+  <target>Betű vastagság</target>
+</trans-unit>
+<trans-unit id="s27055f79e0acf6e4">
+  <source>Lighter</source>
+  <target>Vékony</target>
+</trans-unit>
+<trans-unit id="se308026e8e424457">
+  <source>Regular</source>
+  <target>Normál</target>
+</trans-unit>
+<trans-unit id="sf7c0eba7c822e3d6">
+  <source>Bold</source>
+  <target>Vastag</target>
+</trans-unit>
+<trans-unit id="saf491792a51260a7">
+  <source>Font color</source>
+  <target>Betűszín</target>
+</trans-unit>
+<trans-unit id="sb8584745cf71c92a">
+  <source>Link color</source>
+  <target>Hivatkozás szín</target>
+</trans-unit>
+<trans-unit id="s5bf5477d6a2ad856">
+  <source>Background color</source>
+  <target>Háttérszín</target>
+</trans-unit>
+<trans-unit id="s7eb605a58e44f5d0">
+  <source>A hr tool</source>
+  <target>Elválasztó</target>
+</trans-unit>
+<trans-unit id="s89980b99a1139860">
+  <source>A title tool</source>
+  <target>Címsor</target>
+</trans-unit>
+<trans-unit id="sc2d8ef6f0a1f7b0a">
+  <source>An HTML editor tool</source>
+  <target>Szöveg szerkesztő</target>
+</trans-unit>
+<trans-unit id="sa75b95980cd80e78">
+  <source>Editor</source>
+  <target>Szerkesztő</target>
+</trans-unit>
+<trans-unit id="s56b5a72b50ecd75b">
+  <source>margin</source>
+  <target>Külső margó</target>
+</trans-unit>
+<trans-unit id="s01773940057fa676">
+  <source>padding</source>
+  <target>Belső margó</target>
+</trans-unit>
+<trans-unit id="sc980855a000b76ea">
+  <source>Bottom</source>
+  <target>Alsó</target>
+</trans-unit>
+<trans-unit id="s6d02dc19e21eb49c">
+  <source>Top</source>
+  <target>Felső</target>
+</trans-unit>
+<trans-unit id="s7f326a142e856656">
+  <source>Style</source>
+  <target>Stílus</target>
+</trans-unit>
+<trans-unit id="sf21fb4f4b9e8911f">
+  <source>Width</source>
+  <target>Szélesség</target>
+</trans-unit>
+<trans-unit id="s27fd989bc4e485a1">
+  <source>Bolder</source>
+  <note from="lit-localize">Bolder at font weight</note>
+  <target>Vastagabb</target>
+</trans-unit>
+<trans-unit id="s830ca406ff99e47c">
+  <source>dashed</source>
+  <target>szaggatott</target>
+</trans-unit>
+<trans-unit id="sea237f963179a66d">
+  <source>dotted</source>
+  <target>pontozott</target>
+</trans-unit>
+<trans-unit id="sa0880a9ce131dea8">
+  <source>double</source>
+  <target>dupla</target>
+</trans-unit>
+<trans-unit id="sa0d6152328dcd88b">
+  <source>groove</source>
+  <target>homorú</target>
+</trans-unit>
+<trans-unit id="s1406778f516b6de6">
+  <source>inset</source>
+  <target>bemélyedés</target>
+</trans-unit>
+<trans-unit id="sfb4fcef85696d3a5">
+  <source>outset</source>
+  <target>kiemelkedés</target>
+</trans-unit>
+<trans-unit id="s5dba3a5349402810">
+  <source>ridge</source>
+  <target>domború</target>
+</trans-unit>
+<trans-unit id="s3e71ea6112bd4c94">
+  <source>solid</source>
+  <target>egyszerű</target>
+</trans-unit>
+<trans-unit id="s5c9b57b63817f56f">
+  <source>Global Settings</source>
+  <target>Globális Beállítások</target>
+</trans-unit>
+<trans-unit id="s412a92b135cb6f55">
+  <source>Color Settings</source>
+  <target>Szín beállítás</target>
+</trans-unit>
+<trans-unit id="s2492f5fb1b05b45e">
+  <source>Text</source>
+  <target>Szöveg</target>
+</trans-unit>
+<trans-unit id="s7bb3b290798a29a5">
+  <source>Please retry</source>
+  <target>Próbáld újra!</target>
+</trans-unit>
+<trans-unit id="s98f3d27c6454327a">
+  <source>A button tool</source>
+  <target>Gomb</target>
+</trans-unit>
+<trans-unit id="s3cf89cb47fdde7e9">
+  <source>Link</source>
+  <target>Hivatkozás</target>
+</trans-unit>
+<trans-unit id="s66bf38c8ba398ca7">
+  <source>Block Editor</source>
+  <target>Blokkszerkesztő</target>
+</trans-unit>
+<trans-unit id="s4392bbaa3de52f57">
+  <source>An image tool</source>
+  <target>Kép</target>
+</trans-unit>
+<trans-unit id="se09e3dc382fe557f">
+  <source>Image URL</source>
+  <target>Kép hivatkozás</target>
+</trans-unit>
+<trans-unit id="s9ff3121d30f88d52">
+  <source>Normal</source>
+  <target>Normál</target>
+</trans-unit>
+<trans-unit id="s523eb9043213ff0d">
+  <source>Italic</source>
+  <target>Dőlt</target>
+</trans-unit>
+<trans-unit id="s640bf7eecaa12da4">
+  <source>Oblique</source>
+  <target>Ferde</target>
+</trans-unit>
+<trans-unit id="s619e62c94211a6f5">
+  <source>Font style</source>
+  <target>Betű stílus</target>
+</trans-unit>
+<trans-unit id="s3394e74ea9ce7702">
+  <source>Line Height</source>
+  <target>Sormagasság</target>
+</trans-unit>
+<trans-unit id="sfc962795a4141444">
+  <source>Letter Spacing</source>
+  <target>Betűköz</target>
+</trans-unit>
+<trans-unit id="s669b18c6d2d9c95b">
+  <source>None</source>
+  <target>Nincs</target>
+</trans-unit>
+<trans-unit id="sb206d700d26b14ff">
+  <source>Underline</source>
+  <target>Aláhúzás</target>
+</trans-unit>
+<trans-unit id="s551cdfcb2a06b7ed">
+  <source>Overline</source>
+  <target>Felülvonás</target>
+</trans-unit>
+<trans-unit id="s2520188a041c234f">
+  <source>Line-through</source>
+  <target>Áthúzás</target>
+</trans-unit>
+<trans-unit id="s96526fb9191bb41c">
+  <source>Text decoration</source>
+  <target>Díszítés</target>
+</trans-unit>
+<trans-unit id="sacfd70562764058b">
+  <source>Uppercase</source>
+  <target>Nagybetű</target>
+</trans-unit>
+<trans-unit id="s64cf39cd55309346">
+  <source>Lowercase</source>
+  <target>Kisbetű</target>
+</trans-unit>
+<trans-unit id="s4c1b3f14624a7ac3">
+  <source>Capitalize</source>
+  <target>Nagy kezdőbetű</target>
+</trans-unit>
+<trans-unit id="s0c28622f005e5482">
+  <source>Text transform</source>
+  <target>Szöveg átalakítás</target>
+</trans-unit>
+<trans-unit id="sdf9bc5d9b7f3e3de">
+  <source>Alignment</source>
+  <target>Igazítás</target>
+</trans-unit>
+<trans-unit id="s344ea8f4939cdc98">
+  <source>Color</source>
+  <target>Szín</target>
+</trans-unit>
+<trans-unit id="s9370dc6afa716b57">
+  <source>Border</source>
+  <target>Szegély</target>
+</trans-unit>
+<trans-unit id="s8afc8c5aafb392d3">
+  <source>Radius</source>
+  <target>Kerekítés</target>
+</trans-unit>
+<trans-unit id="s407d4a6bdbc81d06">
+  <source>Slot Editor</source>
+  <target>Oszlop szerkesztő</target>
+</trans-unit>
+<trans-unit id="s132ac0b0b9654529">
+  <source>Font Editor</source>
+  <target>Betű beállítások</target>
+</trans-unit>
+<trans-unit id="sd24aaff71404c9e1">
+  <source>Upload image</source>
+  <target>Képfeltöltés</target>
+</trans-unit>
+<trans-unit id="sb57c7f340921ab3b">
+  <source>Add text</source>
+  <target>Tartalom hozzáadása</target>
+</trans-unit>
+<trans-unit id="sa13eec0370d15cc6">
+  <source>Canvas Editor</source>
+  <target>Vászon szerkesztő</target>
+</trans-unit>
+<trans-unit id="s05e9759cfd99c48f">
+  <source>Justify</source>
+  <target>Sorkizárt</target>
+</trans-unit>
+<trans-unit id="s0d7fcbf8f03c7116">
+  <source>Unsubscribe</source>
+  <target>Ha le szeretnél iratkozni:</target>
+</trans-unit>
+<trans-unit id="sce284f7a3c6ac7df">
+  <source>A footer tool</source>
+  <target>Lábléc</target>
+</trans-unit>
+<trans-unit id="sd2306e31dea86a0d">
+  <source>Unsubscribe link text</source>
+  <target>Klikk ide</target>
+</trans-unit>
+<trans-unit id="s7580cd7a7b280410">
+  <source>Add text to link</source>
+  <target>Link szövege</target>
+</trans-unit>
+<trans-unit id="s0bb25779b4d6bc9f">
+  <source>Send email</source>
+  <target>Email elküldése</target>
+</trans-unit>
+<trans-unit id="s646d56e777694fd0">
+  <source>Sending in email</source>
+  <target>Elküldés emailben</target>
+</trans-unit>
+<trans-unit id="sd1f44f1a8bc20e67">
+  <source>Email</source>
+  <target>E-mail</target>
+</trans-unit>
+</body>
+</file>
+</xliff>
