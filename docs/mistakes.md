@@ -2,6 +2,9 @@
 
 Yes, mistakes are the worst thing to talk about but on the other hand these are the things that gives you the most hands-on experience.
 
+## Proper naming
+// TODO: EBItem should have been sg like ElementCategory, and its instances should have been Elements
+
 ## Weird HTML format
 Since an email could be written in html my initial thought was that basically we need to create an HTML editor, rather than a specific email builder. I could not make bigger mistake than that. The thing is that an email written in html is not a simple html5 file, rather a weird html4. Or not even that one. You don't even know how your email is going to be interpreted as you don't control the doctype.
 Check out this [SO conversation](https://stackoverflow.com/questions/9136002/what-version-of-html-to-use-in-emails)
