@@ -151,7 +151,9 @@ There's a [CommandManager](../src/command/CommandManager.ts) unit that has the r
 
 
 There's one special case that must be mentioned:
+
 ![image](./command-graph-example.svg)
+
 Let's say we have 5 commands initially: A,B,C,D,E
 Since E was the last executed command, therefore internally in CommandManager there's a pointer which points to it.
 
@@ -160,6 +162,14 @@ Let's say the user wants to undo the last 2 commands, namingly E and D. In this 
 In this case if the user executes a new F command, then we basically alter the history chain, and end up with the bottom graph, meaning we lost the D and E commands.
 
 This is a usual behaviour among those apps which provides history (i.e. vs code), but it's good to visualize this.
+
+### Views
+
+There was an another AC as to different [device views](../src/views.ts), namingly Desktop, Tablet and Mobile. \
+There used to be a toolbar, where the preview icons were present. At this stage of the project it was under remaking, therefore you can't see it at the moment. \
+However, the preview is still in the project, you can find it as [\<eb-preview>](../src/pillar/preview/eb-preview.ts).
+
+The concept is easy, we just create an iframe with the width associated to a device view, compile the AppState to html, and feed the iframe with the compiled html.
 
 ### Events
 
