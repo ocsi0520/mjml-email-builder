@@ -1,10 +1,43 @@
 # Mistakes
 
-Yes, mistakes are the worst thing to talk about but on the other hand these are the things that gives you the most hands-on experience.
+Yes, mistakes are the worst things to talk about but on the other hand these are the things that gives you the most hands-on experience.
+
+## Lack of tests
+The entry level costs for automated tests are higher than manual tests, that's obvious. On the other hand in the long run it pays off to use them next to / instead of manual tests. 
+
+
+![image](./manual-vs-automated-tests.webp) \
+*Picture is from [nextgen's post](https://resources.nextgen-technology.com/automated-testing-measure-roi)*
+
+
+Given the estimated time of this project, I can say that for us manual tests would have been sufficient.
+The thing is (this brings us a project-related and not code-related problem) we miserably [misestimated the project](#weird-html-format).
+
+I'm trying to be as succinct as possible. Tests gives you
+- Directly
+  - confidence that your code works
+  - proof to you and to your customer/co-worker that a certain part of the code complies with the given acceptance criteria
+  - ability to easily check whether your refactor was successful
+  - easier debugging; clues where to find a problem, especially when integrating a 3rd party package
+- Indirectly
+  - [examples](https://www.youtube.com/watch?v=i37i6DE5kxg) how to use your code (basically an API description)
+  - loosely-coupled structure
+
+In case you are an experienced dev, you can achieve the "Indirectly" part, but you can't acquire the "Directly" one.
+
+Moreover there's a person who is one of the most competent person in the world regarding clean code, and that's Robert C. Martin aka. Mr. Clean Code. [Check out his lecture](https://youtu.be/Qjywrq2gM8o?si=61crzDw0H1aKg4FR&t=1838).
+(I'd like to highlight the part about code coverage.)
+
+Also there's a clip from one of his lectures regarding [manual vs automated tests](https://www.youtube.com/watch?v=h-99YLmURwQ).
+
+## Obviously a lot of TODO comments left
+Again this is something that Robert C. Martin [can tell you](https://youtu.be/2a_ytyt9sf8?si=EJh7Bo-lnRKP9gdV&t=1498) in a much more brief, elegant and profound way.
 
 ## Proper naming
 // TODO: EBItem should have been sg like ElementCategory, and its instances should have been Elements
+This is something that was already mentioned in the [architecture part](./architecture.md#ebitem), but let's just elaborate on it a bit.
 
+TODO: [Ubiquitous Language](https://martinfowler.com/bliki/UbiquitousLanguage.html)
 ## Weird HTML format
 Since an email could be written in html my initial thought was that basically we need to create an HTML editor, rather than a specific email builder. I could not make bigger mistake than that. The thing is that an email written in html is not a simple html5 file, rather a weird html4. Or not even that one. You don't even know how your email is going to be interpreted as you don't control the doctype.
 Check out this [SO conversation](https://stackoverflow.com/questions/9136002/what-version-of-html-to-use-in-emails)
