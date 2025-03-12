@@ -9,7 +9,7 @@ That being said we basically grab the id of an item, and assign this id to somet
 That something can be the way how to [make MJML template](#3-mjml-css-generator) for that item, how to serialize/compress an instance of an item, or how to create a [StateNode](#1-statenode) for that item.
 
 ## EBItem
-This application consists of so-called items. (Obviously I should have found a more specific-phrase.)
+This application consists of so-called items. (Obviously I should have found a more specific-phrase like ElementCategory so that its instances should have been Elements.)
 
 These items represents well... categories of elements which can be put onto the canvas.
 But actually the canvas itself is also considered as an instance of the CanvasItem. Block, Slot, Button, WYSIWYG section (called EditorToolPlugin), picture (called ImageToolPlugin) etc-etc are all considered as items.

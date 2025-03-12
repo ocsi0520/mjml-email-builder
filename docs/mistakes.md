@@ -25,19 +25,37 @@ I'm trying to be as succinct as possible. Tests gives you
 
 In case you are an experienced dev, you can achieve the "Indirectly" part, but you can't acquire the "Directly" one.
 
-Moreover there's a person who is one of the most competent person in the world regarding clean code, and that's Robert C. Martin aka. Mr. Clean Code. [Check out his lecture](https://youtu.be/Qjywrq2gM8o?si=61crzDw0H1aKg4FR&t=1838).
+There's a person who is one of the most competent person in the world regarding clean code, and that's Robert C. Martin aka. Mr. Clean Code. [Check out his lecture](https://youtu.be/Qjywrq2gM8o?si=kmR2PmDBFs87ZzBV&t=1907).
 (I'd like to highlight the part about code coverage.)
 
-Also there's a clip from one of his lectures regarding [manual vs automated tests](https://www.youtube.com/watch?v=h-99YLmURwQ).
+Also there's a part of the same lecture regarding [manual vs automated tests](https://youtu.be/Qjywrq2gM8o?si=CQ0lN6DxFRG2pHqB&t=2790).
+
+**Key takeaway**:
+1. Estimate Properly
+2. Write tests
 
 ## Obviously a lot of TODO comments left
-Again this is something that Robert C. Martin [can tell you](https://youtu.be/2a_ytyt9sf8?si=EJh7Bo-lnRKP9gdV&t=1498) in a much more brief, elegant and profound way.
+Again this is something that Robert C. Martin [can tell you](https://youtu.be/2a_ytyt9sf8?si=EJh7Bo-lnRKP9gdV&t=1498) in a much more brief, elegant and profound way, but to put it in a nutshell:
+if you commit a TODO it's 90% that never going to be done.
+
+**Key takeaway**:
+Don't leave TODOs or you end up having a lot of TODOs everywhere and technical debts that you build upon.
 
 ## Proper naming
-// TODO: EBItem should have been sg like ElementCategory, and its instances should have been Elements
 This is something that was already mentioned in the [architecture part](./architecture.md#ebitem), but let's just elaborate on it a bit.
 
-TODO: [Ubiquitous Language](https://martinfowler.com/bliki/UbiquitousLanguage.html)
+There's a notion coming from [Domain Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html) called [Ubiquitous Language](https://martinfowler.com/bliki/UbiquitousLanguage.html).
+It basically means, that everyone understands the phrases that you use in the project regardless their role, including future-you in 2 years.
+
+If the names are ambiguous, the project becomes cluttered.
+
+If you have [proper tests](#lack-of-tests), you can be confident that you don't break the code without noticing it.
+If you can change the code, you can rename things.
+If you can rename things, you can tidy the codebase.
+
+**Key takeaway**:
+The most important documentation is the code itself. If you take time to make proper namings, you made sure that the project is maintainable.
+
 ## Weird HTML format
 Since an email could be written in html my initial thought was that basically we need to create an HTML editor, rather than a specific email builder. I could not make bigger mistake than that. The thing is that an email written in html is not a simple html5 file, rather a weird html4. Or not even that one. You don't even know how your email is going to be interpreted as you don't control the doctype.
 Check out this [SO conversation](https://stackoverflow.com/questions/9136002/what-version-of-html-to-use-in-emails)
