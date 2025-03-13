@@ -173,4 +173,38 @@ The concept is easy, we just create an iframe with the width associated to a dev
 
 ### Events
 
-// TODO:
+Another big segment of the architecture is event handling. My intention was to make a de-centralized structure of events with type-safe arguments. So whenever I write
+```typescript
+dispatchEBEvent(this, 'preview', 𝙸); // 𝙸 stands for the cursor
+```
+than at the cursor I'll see the available previews (mobile, tablet, desktop) values.
+
+#### Event groups
+I tried to group the events based on their place of impact.
+For instance I created a [sidepanel.event.ts](../src/events/sidepanel.event.ts), where the sidepanel-related events are grouped.
+Here's the `'sidepanel-view-change'` event which occurs when
+- the user switches among `'editor'`, `'tools'`, `'global'` views
+- when something triggers a sidepanel view change i.e. inserting a new `SN` then sidepanel automatically switches to the editor view of that `SN`.
+
+These are the groups that were created:
+- *SidePanelEmailBuilderEventMap* mentioned above
+- *OutgoingEventMap* for sending messages to the [host application](../README.md#what-are-those-buttons-in-the-header)
+- *CommandEmailBuilderEventMap* for undo/redo events
+- *ToolbarEmailBuilderEventMap* extends *CommandEmailBuilderEventMap* \
+for preview related events
+- *HeaderEmailBuilderEventMap* for debugs and initiating sending events
+i.e.`'request-send-app-state'` triggers [`'send-app-state'`](../src/events/handlers/provider/HeaderEventHandler.ts?plane1#L86)
+- *CanvasEmailBuilderEventMap* for every canvas-related events (selection, moving, hover, state-change etc-etc)
+
+> side note: undo/redo events - I don't remember for the reason - supposed to be at multiple places (not just at toolbar)
+> that's why `CommandEmailBuilderEventMap` is being extended by `ToolbarEmailBuilderEventMap` and `CanvasEmailBuilderEventMap`
+
+// TODO: elaborate on the following 3 sections
+
+#### EBEventHandler
+A handler which handles a group of events. I.e. [SidePanelEventHandler](../src/events/handlers/provider/SidePanelEventHandler.ts) handles all events which are described in [SidePanelEmailBuilderEventMap](../src/events/sidepanel.event.ts)
+#### EBEventHandlerManager
+Gets the `<eb-root>` component and connects/disconnects all EventHandlers to it.
+#### EventHandlerProvider
+Collects all EBEventHandler and provides it to EBEventHandlerManager
+
