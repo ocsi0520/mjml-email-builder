@@ -72,7 +72,7 @@ Whenever we want to load back the state we also use the StateNodeCompressor. The
 It must be mentioned that there are items which are available even without registering any additional plugins. These items are [CanvasItem](../src/AppState/BuiltInItem/Canvas/CanvasItem.ts), [BlockItem](../src/AppState/BuiltInItem/Block/BlockItem.ts) and [SlotItem](../src/AppState/BuiltInItem/Slot/SlotItem.ts)
 
 ### CanvasItem
-It kinda speaks for itself. This one is the "element category" of canvas. There can be only one canvas in the AppState and it must be the root element in.
+It kinda speaks for itself. This one is the "element category" of canvas. There can be only one canvas in the AppState and it must be the root element.
 The only direct children it can have are Block elements (discussed right after).
 
 ### BlockItem
@@ -173,14 +173,16 @@ The concept is easy, we just create an iframe with the width associated to a dev
 
 ### Events
 
-Another big segment of the architecture is event handling. My intention was to make a de-centralized structure of events with type-safe arguments. So whenever I write
+Another big segment of the architecture is event handling.
+My intention was to make a de-centralized structure of events with type-safe arguments.
+So whenever I write
 ```typescript
 dispatchEBEvent(this, 'preview', 𝙸); // 𝙸 stands for the cursor
 ```
-than at the cursor I'll see the available previews (mobile, tablet, desktop) values.
+then at the cursor I'll see the available previews (mobile, tablet, desktop) values.
 
 #### Event groups
-I tried to group the events based on their place of impact.
+I tried to group the events based on their emission origin or place of impact.
 For instance I created a [sidepanel.event.ts](../src/events/sidepanel.event.ts), where the sidepanel-related events are grouped.
 Here's the `'sidepanel-view-change'` event which occurs when
 - the user switches among `'editor'`, `'tools'`, `'global'` views
@@ -194,17 +196,17 @@ These are the groups that were created:
 for preview related events
 - *HeaderEmailBuilderEventMap* for debugs and initiating sending events
 i.e.`'request-send-app-state'` triggers [`'send-app-state'`](../src/events/handlers/provider/HeaderEventHandler.ts?plane1#L86)
-- *CanvasEmailBuilderEventMap* for every canvas-related events (selection, moving, hover, state-change etc-etc)
+- *CanvasEmailBuilderEventMap* extends *CommandEmailBuilderEventMap* \
+for every canvas-related events (selection, moving, hover, state-change etc-etc)
 
 > side note: undo/redo events - I don't remember for the reason - supposed to be at multiple places (not just at toolbar)
 > that's why `CommandEmailBuilderEventMap` is being extended by `ToolbarEmailBuilderEventMap` and `CanvasEmailBuilderEventMap`
 
-// TODO: elaborate on the following 3 sections
-
 #### EBEventHandler
 A handler which handles a group of events. I.e. [SidePanelEventHandler](../src/events/handlers/provider/SidePanelEventHandler.ts) handles all events which are described in [SidePanelEmailBuilderEventMap](../src/events/sidepanel.event.ts)
-#### EBEventHandlerManager
-Gets the `<eb-root>` component and connects/disconnects all EventHandlers to it.
 #### EventHandlerProvider
 Collects all EBEventHandler and provides it to EBEventHandlerManager
+#### EBEventHandlerManager
+Gets the `<eb-root>` component and connects/disconnects all EventHandlers to it.
+
 

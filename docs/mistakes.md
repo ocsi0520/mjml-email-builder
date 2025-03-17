@@ -73,7 +73,7 @@ The time I realized that it is not going to work with a simple html5 generated f
 To tell you the truth, I didn't spend time to find a proper npm package which could be used as DI in a frameworkless environment and has proper API.
 
 Instead I just made my odd solution. Classes with default constructor parameters, allowed me to use all of them like `new MyClass()`.
-With this I was able to create singleton instances on the class itself (so a static field, see [class.util.ts](./src/common/utils/class.util.ts)).
+With this I was able to create singleton instances on the class itself (so a static field, see [class.util.ts](../src/common/utils/class.util.ts)).
 
 But this came with costs:
 - Only singleton instances can be made
