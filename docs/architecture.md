@@ -165,10 +165,7 @@ This is a usual behaviour among those apps which provides history (i.e. vs code)
 
 ### Views
 
-There was an another AC as to different [device views](../src/views.ts), namingly Desktop, Tablet and Mobile. \
-There used to be a toolbar, where the preview icons were present. At this stage of the project it was under remaking, therefore you can't see it at the moment. \
-However, the preview is still in the project, you can find it as [\<eb-preview>](../src/pillar/preview/eb-preview.ts).
-
+There are 3 [device views](../src/views.ts) in the project, namingly Desktop, Tablet and Phone.
 The concept is easy, we just create an iframe with the width associated to a device view, compile the AppState to html, and feed the iframe with the compiled html.
 
 ### Events
