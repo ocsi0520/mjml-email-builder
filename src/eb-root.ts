@@ -145,7 +145,7 @@ export class EBRoot extends LitElement {
   // https://stackoverflow.com/a/32383745/11009933
   private initialLocalization(): void {
     const isValidLocale = allLocales.includes(this.lang as LocaleIdentifier);
-    const selectedLocale = isValidLocale ? this.lang : 'hu';
+    const selectedLocale = isValidLocale ? this.lang : 'en';
     localization.setLocale(selectedLocale);
   }
 }
