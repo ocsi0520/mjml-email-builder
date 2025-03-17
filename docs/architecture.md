@@ -12,33 +12,65 @@ That something can be the way how to [make MJML template](#3-mjml-css-generator)
 This application consists of so-called items. (Obviously I should have found a more specific-phrase like ElementCategory so that its instances should have been Elements.)
 
 These items represents well... categories of elements which can be put onto the canvas.
-But actually the canvas itself is also considered as an instance of the CanvasItem. Block, Slot, Button, WYSIWYG section (called EditorToolPlugin), picture (called ImageToolPlugin) etc-etc are all considered as items.
+Actually the canvas itself is also considered as an instance of the CanvasItem. \
+Block, Slot, Button, WYSIWYG section (called EditorToolPlugin), picture (called ImageToolPlugin) etc-etc are all considered as items.
 
 ## Item Instance (Element) State
-Each of the instance of items has their own state.
-This state contains data about the instance, \
-general ones such as paddings, margins, background color, and \
-item-specific ones like text for a button, the division ratio for a block (2-1, 1-1-1, 1-2). \
+Each of the instance of items has their own state. This state contains data about the instance
+- general ones such as paddings, margins, background color
+- item-specific ones like text for a button, the division ratio for a block (2-1, 1-1-1, 1-2), url path for images.
+
 This state must be serializable.
 
 ## Item parts
 Items need to provide a unique item id and the following:
 
-### 1. StateNode
-An item need to have the possibility to create a StateNode.
-A StateNode is basically a Node which is a mediator among a StateViewer, a state and if present a StateEditor. That means the item instances are presented on the canvas by their viewer. In case I click on a viewer, it gets selected which triggers an editor to be created and shown on the sidepanel.
-In case we edit something with the editor the StateNode's state is being updated, and we also notify the viewer of the change so it can re-render itself.
+### 1. StateEditor
+An item needs to implement a `getEditor` method, which provides an item-specific editor for an item instance.
+With this editor you can change the [state of the selected element](#item-instance-element-state).
+So if the user selects a Title element on the canvas, then an `<eb-title-tool-editor>` component is created, which (besides the general state fields like bg-color, paddings) has a field to change the title text.
 
-This StateNode is also part of a tree called **AppState**. \
-I.e. canvas has a block, which has a 2-1 ratio (big and small) for slots. Inside the first slot there's a Title instance.  So the AppState is like:
+<div style="display: flex; justify-content: center;">
+    <figure>
+        <img src="./title-editor.png" height="400px">
+        <figcaption>Editor is on the right side</figcaption>
+    </figure>
+</div>
 
-![image](./simple-app-state.svg)
+### 2. StateNode
+An item needs to have the possibility to create a StateNode.
+A StateNode is a Node which is a mediator among a [`StateViewer`](#stateviewer), a [`state`](#item-instance-element-state) and if present a [`StateEditor`](#stateeditor).
 
 > side note: sometimes I use the abbreviation `SN` to refer to StateNode
 
-### 2. StateEditor
-This one is already mentioned. Nothing fancy about it.
-An item needs to implement a `getEditor` method, which provides an item-specific editor for an item instance. So if the user selects a Title element on the canvas, then a `<eb-title-tool-editor>` component is being created, which (besides the general state fields like bg-color, paddings) has a field to change the title text.
+#### StateViewer
+
+Item instances are presented on the canvas by their viewer. \
+I.e. If we create a new instance of Button (with [ButtonToolPlugin](../src/ToolPlugin/ButtonTool/ButtonToolPlugin.ts)),
+then it is presented by [\<eb-button-tool-viewer>](../src/ToolPlugin/ButtonTool/ButtonToolPlugin.ts?plane1#35) on the canvas.
+
+
+<div style="display: flex; justify-content: center;">
+    <figure>
+        <img src="./button-viewer.png" height="400px">
+        <figcaption>Viewer is on the left side</figcaption>
+    </figure>
+</div>
+
+In case I click on a viewer, it gets selected which triggers an editor to be created and shown on the sidepanel.
+In case we edit something on the SN's state (with the editor, or by undo or redo a command), then SN updates its viewer and its editor (if presents - maybe we reverted a command while other element was selected.)
+
+#### AppState
+
+StateNodes are also part of a tree called **AppState**. \
+I.e. canvas has a block, which has a 2-1 ratio (big and small) for slots. Inside the first slot there's a Title instance. So the AppState is like:
+
+<div style="display: flex; justify-content: center;">
+    <figure>
+        <img src="./simple-app-state.svg" height="400px">
+        <figcaption>A possible AppState with 5 elements</figcaption>
+    </figure>
+</div>
 
 ### 3. MJML-CSS Generator
 This is a part of the app which has radically changed overtime. You can find the reason written in the [doc of my mistakes](./mistakes.md#weird-html-format).
@@ -65,18 +97,26 @@ So i.e. a SlotStateNode is being processed, and it has a Button and a Title chil
 ### 4. StateNodeCompressor
 Lastly an item has a [StateNodeCompressor](../src/AppState/EBItem/StateNodeCompressor.ts) which is responsible for serializing and de-serializing the state nodes.
 The purpose of this feature is to be able to save the AppState into a simple file / wherever.
-It's similar to [MJML-CSS Generator](#3-mjml-css-generator) in the terms of that from each of the StateNode we get a string, and eventually all of these substrings are combined into one big string. This big combined string is basically the compressed/serialized AppState.\
+It's similar to [MJML-CSS Generator](#3-mjml-css-generator) in the terms of that from each of the StateNode we get a string, and eventually all of these substrings are combined into one big string. This big combined string is the compressed/serialized AppState.\
 Whenever we want to load back the state we also use the StateNodeCompressor. The string becomes the same AppState-tree that it used to be, and then we just replace the canvas's content with it.
 
 ## Builtin Items
 It must be mentioned that there are items which are available even without registering any additional plugins. These items are [CanvasItem](../src/AppState/BuiltInItem/Canvas/CanvasItem.ts), [BlockItem](../src/AppState/BuiltInItem/Block/BlockItem.ts) and [SlotItem](../src/AppState/BuiltInItem/Slot/SlotItem.ts)
 
 ### CanvasItem
-It kinda speaks for itself. This one is the "element category" of canvas. There can be only one canvas in the AppState and it must be the root element.
-The only direct children it can have are Block elements (discussed right after).
+This one is the "canvas category". There can be only one canvas in the AppState and it must be the root element.
+The only direct children it can have are Block elements.
 
 ### BlockItem
-A block item represents a row (in desktop) or a column (in mobile). From the user's perspective you are not able to add any elements to the canvas without first injecting a block element.
+A block instance represents a row (in desktop) or a column (in mobile). From the user's perspective you are not able to add any elements to the canvas without first injecting a block element.
+
+<div style="display: flex; justify-content: center;">
+    <figure>
+        <img src="./create-blocks.png">
+        <figcaption>Block types based on its ratio: 1-1-1, 1-2, 2-1, 1-1, 1</figcaption>
+    </figure>
+</div>
+
 From the dev's perspective it's a bit different.
 BlockItems **MUST HAVE** at least one slot child. Based on it's division rate, there can be 1, 2 or 3 Slot children. Also the only type that a Block element accepts as a child is the Slot element.
 
@@ -142,6 +182,7 @@ For this one the most obvious pattern is [command pattern](https://refactoring.g
 I created a [RevertableCommand interface](../src/command/RevertableCommand.ts), the usual things are written:
 - execute (do)
 - undo
+- revert
 
 Plus there's an extra one: isExecutable.
 
@@ -152,14 +193,19 @@ There's a [CommandManager](../src/command/CommandManager.ts) unit that has the r
 
 There's one special case that must be mentioned:
 
-![image](./command-graph-example.svg)
+<div style="display: flex; justify-content: center;">
+    <figure>
+        <img src="./command-graph-example.svg">
+        <figcaption>A possible history-chain change in the CommandManager</figcaption>
+    </figure>
+</div>
 
 Let's say we have 5 commands initially: A,B,C,D,E
 Since E was the last executed command, therefore internally in CommandManager there's a pointer which points to it.
 
 Let's say the user wants to undo the last 2 commands, namingly E and D. In this case we first call the E's undo method, then D's undo method. Meanwhile we update the >>last executed command's<< pointer. So that means the pointer now points to C.
 
-In this case if the user executes a new F command, then we basically alter the history chain, and end up with the bottom graph, meaning we lost the D and E commands.
+In this case if the user executes a new F command, then we alter the history chain, and end up with the bottom graph, meaning we lost the D and E commands.
 
 This is a usual behaviour among those apps which provides history (i.e. vs code), but it's good to visualize this.
 
