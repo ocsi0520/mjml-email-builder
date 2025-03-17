@@ -1,6 +1,6 @@
 import { LitElement, html, css, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-// import { View } from '../../views';
+import { View, views } from '../../views';
 import { dispatchEBEvent } from '../../events/app.event';
 
 const globalSettingsIcon = new URL(
@@ -18,12 +18,18 @@ const redoIcon = new URL(
   import.meta.url
 ).href;
 
-// const iconsByView: Record<View, string> = {
-//   tablet: new URL('../../../../assets/views/tablet-solid.svg', import.meta.url).href,
-//   phone: new URL('../../../../assets/views/mobile-screen-button-solid.svg', import.meta.url).href,
-//   desktop: new URL('../../../../assets/views/desktop-solid.svg', import.meta.url)
-//     .href,
-// };
+const iconsByView: Record<View, string> = {
+  tablet: new URL('../../../../assets/views/tablet-solid.svg', import.meta.url)
+    .href,
+  phone: new URL(
+    '../../../../assets/views/mobile-screen-button-solid.svg',
+    import.meta.url
+  ).href,
+  desktop: new URL(
+    '../../../../assets/views/desktop-solid.svg',
+    import.meta.url
+  ).href,
+};
 @customElement('eb-toolbar')
 export class EBToolbar extends LitElement {
   public static styles = css`
@@ -67,9 +73,9 @@ export class EBToolbar extends LitElement {
   @property()
   public redoAvailable: boolean = false;
   protected render(): TemplateResult {
-    // ${views.map((view) => this.renderViewIcon(view))}
     return html`
       ${this.renderGlobalSettingsIcon()}
+      ${views.map((view) => this.renderViewIcon(view))}
       <button
         class="command-button"
         .disabled=${!this.undoAvailable}
@@ -91,14 +97,14 @@ export class EBToolbar extends LitElement {
       <img alt="global settings" src=${globalSettingsIcon} />
     </button>`;
   }
-  //   private renderViewIcon(view: View): TemplateResult {
-  //     return html`<button @click=${(): void => this.previewWith(view)}>
-  //       <img alt=${view} src=${iconsByView[view]} />
-  //     </button>`;
-  //   }
-  //   private previewWith(view: View): void {
-  //     dispatchEBEvent(this, 'preview', view);
-  //   }
+  private renderViewIcon(view: View): TemplateResult {
+    return html`<button @click=${(): void => this.previewWith(view)}>
+      <img alt=${view} src=${iconsByView[view]} />
+    </button>`;
+  }
+  private previewWith(view: View): void {
+    dispatchEBEvent(this, 'preview', view);
+  }
   private showGlobalSettings(): void {
     dispatchEBEvent(this, 'sidepanel-view-change', 'global');
   }
