@@ -30,7 +30,7 @@ So if the user selects a Title element on the canvas, then an `<eb-title-tool-ed
 
 ### 2. StateNode
 An item needs to have the possibility to create a StateNode.
-A StateNode is a Node which is a mediator among a [`StateViewer`](#stateviewer), a [`state`](#item-instance-element-state) and if present a [`StateEditor`](#stateeditor).
+A StateNode is a Node which is a mediator among a [`StateViewer`](#stateviewer), a [`state`](#item-instance-element-state) and if present a [`StateEditor`](#1-stateeditor).
 
 > side note: sometimes I use the abbreviation `SN` to refer to StateNode
 
@@ -136,7 +136,7 @@ After registering a tool, the user is able to drag-n-drop it into a slot.
 
 So this is a wrapper for a hash-table. The most striking example is [EBItemRegister](../src/AppState/Register/EBItemRegister.ts). This registers things related to [EBItems](#ebitem).
 That being said we grab the id of an item, and assign this id to something.
-That something can be the way how to [make MJML template](#3-mjml-css-generator) for that item, how to [serialize/compress](#4-statenodecompressor) an instance of an item, or how to create a [StateNode](#1-statenode) for that item.
+That something can be the way how to [make MJML template](#3-mjml-css-generator) for that item, how to [serialize/compress](#4-statenodecompressor) an instance of an item, or how to create a [StateNode](#2-statenode) for that item.
 
 ### How RegisterVisitor works
 
@@ -191,7 +191,6 @@ For this one the most obvious pattern is [command pattern](https://refactoring.g
 I created a [RevertableCommand interface](../src/command/RevertableCommand.ts), the usual things are written:
 - execute (do)
 - undo
-- revert
 
 Plus there's an extra one: isExecutable.
 
@@ -265,7 +264,7 @@ Let's say a user dragged the button tool and dropped it into a slot.
 The drop event on slot triggers a [`state-node-drop-zone`](../src/AppState/Lit/BasicContainerViewerLit.ts?plane1#L76) event.
 That event propagates up to `<eb-root>`.
 
-> side note: [dispatchEBEvent](../src/events/app.event.ts) create events with `composed: true`, therefore it [goes through shadow DOM boundaries](https://developer.mozilla.org/en-US/docs/Web/API/Event/composed)
+> side note: [dispatchEBEvent](../src/events/app.event.ts?plane1#L22) create events with `composed: true`, therefore it [goes through shadow DOM boundaries](https://developer.mozilla.org/en-US/docs/Web/API/Event/composed)
 
 As previously
 - `<eb-root>` [initiated](../src/eb-root.ts?plane1#L95) the event handlers by the [EBEventHandlerManager](#ebeventhandlermanager),
@@ -293,6 +292,8 @@ The creation of the `new SN` is handled by the StateNodeFactory
 Before we apply the command, it checks
 - if with the given item ID an instance could be created
 - if the `container SN` can accept the `created SN`.
+
+In case the command is executable, then the `container SN` inserts the `created SN` among its children, so that `created SN` is injected into the [AppState](#appstate).
 
 #### Creation of a new SN
 For creating the `new SN` we use the [StateNodeFactory](../src/AppState/Register/StateNodeFactory.ts).
