@@ -173,6 +173,6 @@ Of course I could search for some plugin which can mix up commonjs with es modul
 
 Eventually, in order to use them I referenced those two files directly from index.html as a simple script.
 
-For simple `npm run start` this was enough. But in order to bundle it when using `npm run build` I basically needed to copy their minified version. You can see that _rollup.config.js_ in line 25,27.
+For simple `npm run start` this was enough. But in order to bundle it when using `npm run build` I basically needed to copy their minified version. You can see that in [_rollup.config.js_](../rollup.config.js?plane1#L25).
 
 **Key takeaway**: write your JS software in the era of ES modules. 😁
