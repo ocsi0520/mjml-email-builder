@@ -6,6 +6,8 @@ The goal was to create a WYSIWYG editor for emails.
 At this stage of the project 80-90% was done by me.
 Kudos for the remaining part to [Lucien](https://github.com/lucienruppert) & [Elementbound](https://github.com/elementbound)
 
+[**Demo is available here**](https://ocsi0520.github.io/mjml-email-builder/)
+
 ## Tech Stack
 
 ### Base of the project
